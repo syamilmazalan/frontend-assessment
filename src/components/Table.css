@@ -1,0 +1,11 @@
+table {
+    font-size: calc(10px + 1vmin);
+}
+
+th {
+    white-space: nowrap;
+}
+
+td:hover {
+    cursor: pointer;
+}
