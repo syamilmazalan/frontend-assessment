@@ -1,7 +1,8 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, useGlobalFilter } from "react-table";
 
 import "./Table.css";
+import TableFilter from "./TableFilter";
 
 const Table = ({
   columns,
@@ -10,7 +11,7 @@ const Table = ({
   fetchPosts,
   page,
   setPage,
-  totalPages,
+  totalPages
 }) => {
   const {
     getTableProps,
@@ -18,10 +19,12 @@ const Table = ({
     headerGroups,
     prepareRow,
     rows,
+    globalFilter,
+    setGlobalFilter
   } = useTable({
     columns,
     data,
-  });
+  }, useGlobalFilter);
 
   const clickHandler = (row) => {
     setRow(row);
@@ -44,6 +47,7 @@ const Table = ({
 
   return (
     <>
+      <TableFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
       <table
         className='table table-dark table-hover table-responsive'
         {...getTableProps()}
